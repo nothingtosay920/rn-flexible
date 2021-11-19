@@ -1,0 +1,23 @@
+{
+  "name": "rn-flexible",
+  "version": "1.0.0",
+  "description": "react native响应式方案。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nothingtosay920/rn-flexible.git"
+  },
+  "keywords": [],
+  "author": "nothintosay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nothingtosay920/rn-flexible/issues"
+  },
+  "homepage": "https://github.com/nothingtosay920/rn-flexible#readme",
+  "peerDependencies": { 
+    "react-native": ">= 0.44"
+  }
+}
