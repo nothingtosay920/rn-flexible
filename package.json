@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/nothingtosay920/rn-flexible.git"
   },
-  "keywords": [],
+  "keywords": [
+    "rn"
+  ],
   "author": "nothintosay",
   "license": "ISC",
   "bugs": {
