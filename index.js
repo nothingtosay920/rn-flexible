@@ -4,15 +4,15 @@ import { Dimensions, PixelRatio } from 'react-native'
 const deviceWidth = Dimensions.get('window').width
 const deviceHeight = Dimensions.get('window').height
 
+// 
+let unit = deviceWidth / 10 
 /**
  * 
  * @param {number} width 
  * @returns number
  * 此函数接收一个代表宽度值的数值，返回的是
  */
-export const widthUnit = (width: number): number => {
-  return PixelRatio.roundToNearestPixel(width * deviceWidth / 10)
-}
+const widthUnit = (width) => PixelRatio.roundToNearestPixel(width * unit)
 
 /**
  * 
@@ -20,22 +20,35 @@ export const widthUnit = (width: number): number => {
  * @returns number
  * 此函数接收一个代表宽度值的数值，返回的是
  */
-export const heightUnit = (height: number) => PixelRatio.roundToNearestPixel(height * deviceHeight / 10)
+const heightUnit = (height) => PixelRatio.roundToNearestPixel(height * deviceHeight / 10)
 
 // const setDefaultWidth = (value) => PixelRatio.roundToNearestPixel(value * 100 * scale)
 
+const equalDeviceWidth = () => deviceWidth / 375
+
+const setDefaultWidth = (...params) => parseParams(...params)
+
 function parseParams(arg1, arg2, arg3) {
-  
+  if (!arg1) return 
+  unit = arg1
+  arg2 && parseEqualParams(arg2)
+  arg3 && parseSectionParams(arg2, arg3)
 }
 
-export function setDefaultWidth (setUnit: number): number
-export function setDefaultWidth (minUnit: number, maxUnit: number): number
-export function setDefaultWidth (defaultUnit: number, majorUnit: number, maxUnit: number):  number
-export function setDefaultWidth (arg1?: number, arg2?: number, arg3?: number) {
-  parseParams(arg1, arg2, arg3)
-  return arg1 + arg2
+// 375
+function parseEqualParams(max) {
+  unit = Math.min(unit, max) * equalDeviceWidth()
+  return
 }
-setDefaultWidth(1, 2)
+
+function parseSectionParams(marjor, large) {
+  if (deviceWidth > 1080) {
+    unit = large
+  } else if (deviceWidth > 540) {
+    unit = marjor
+  }
+  return
+}
 
 
 // setDefaultWidth<stringnumber>(1, 2, 3)
